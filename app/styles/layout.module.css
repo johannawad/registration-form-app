@@ -15,10 +15,6 @@
   pointer-events: none;
 }
 
-.header {
-  grid-area: header;
-}
-
 .main {
   grid-area: main;
 }
