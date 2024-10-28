@@ -4,11 +4,11 @@ This project is a responsive, multi-step registration form designed to guide use
 
 ## Design
 
-The form design aligns with TrustFlow's brand guidelines, featuring a cohesive color scheme and UI components consistent with TrustFlow’s design language. Screenshots of the form’s layout and style can be viewed below.
+The form design aligns with TrustFlow's brand guidelines, featuring a cohesive color scheme and UI components consistent with TrustFlow’s design language. Screenshots of the form’s layout and style can be viewed below:
 
 - ![User Info](designs/home.png)
 - ![Policy](designs/policy.png)
-- ![Summary](designs/policy.png)
+- ![Policy](designs/summary.png)
 
 ## Features
 
