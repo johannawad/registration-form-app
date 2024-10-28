@@ -34,6 +34,8 @@ npm install
 npm run dev
 ```
 
+The application will run on http://localhost:3000/
+
 ### To build
 
 ```bash
