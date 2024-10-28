@@ -8,7 +8,6 @@ The form design aligns with TrustFlow's brand guidelines, featuring a cohesive c
 
 - ![User Info](designs/home.png)
 - ![Policy](designs/policy.png)
-- ![Policy](designs/summary.png)
 
 ## Features
 
