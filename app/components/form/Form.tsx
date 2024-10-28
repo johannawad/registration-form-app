@@ -1,8 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { Button, Box, Paper, Typography } from "@mui/material";
+import { Button, Box, Paper, styled } from "@mui/material";
 import Image from "next/image";
-import styles from "./Form.module.css";
 import { InsurancePolicy } from "../types/InsurancePolicy";
 import { FormData } from "../types/FormData";
 import { ClientInfoStep } from "./steps/ClientInfoStep";
@@ -19,10 +18,38 @@ const initialFormData: FormData = {
   policy: null,
 };
 
+const StyledFormContainer = styled(Paper)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  padding: theme.spacing(3),
+  maxWidth: 600,
+  width: "100%",
+  margin: "auto",
+  boxSizing: "border-box",
+  [theme.breakpoints.down("sm")]: {
+    padding: theme.spacing(2),
+    minWidth: "80vw",
+  },
+}));
+
+const LogoContainer = styled(Box)({
+  display: "flex",
+  justifyContent: "center",
+  width: 200,
+  marginBottom: 16,
+});
+
+const ButtonContainer = styled(Box)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  display: "flex",
+  width: "100%",
+  justifyContent: "space-between",
+}));
+
 export const Form = () => {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState(initialFormData);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null); // State for error message
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -33,12 +60,6 @@ export const Form = () => {
     formData.firstName && formData.lastName && formData.email && formData.dob;
 
   const handleNext = () => {
-    // Check if on the policy selection step and no policy is selected
-    if (step === 1 && !formData.policy) {
-      setErrorMessage("Please select an insurance policy before proceeding."); // Set the error message
-      return;
-    }
-    setErrorMessage(null); // Clear error message
     setStep((prevStep) => prevStep + 1);
   };
 
@@ -48,11 +69,9 @@ export const Form = () => {
 
   const handlePolicySelect = (policy: InsurancePolicy) => {
     setFormData({ ...formData, policy });
-    setErrorMessage(null); // Clear error message when a policy is selected
     handleNext();
   };
 
-  // Define the steps array with unique ids and labels for the progress bar
   const steps = [
     {
       id: 0,
@@ -76,43 +95,22 @@ export const Form = () => {
   ];
 
   return (
-    <Paper
-      elevation={3}
-      sx={{
-        padding: 2,
-        width: "500px",
-        alignItems: "center",
-      }}
-    >
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        mb={2}
-        width={200}
-        mx="auto"
-      >
+    <StyledFormContainer elevation={3}>
+      <LogoContainer>
         <Image
           src="/logo.png"
-          className={styles.logo}
           alt="logo"
           width={200}
           height={100}
           layout="responsive"
         />
-      </Box>
+      </LogoContainer>
 
       <ProgressBar step={step} steps={steps} />
-      {/* Display error message */}
-      {errorMessage && (
-        <Typography variant="body2" color="error" align="center">
-          {errorMessage}
-        </Typography>
-      )}
 
       {steps[step].component}
 
-      <Box mt={2} display="flex" justifyContent="space-between">
+      <ButtonContainer>
         {step > 0 && (
           <Button variant="outlined" onClick={handleBack}>
             Back
@@ -125,7 +123,9 @@ export const Form = () => {
               variant="contained"
               color="primary"
               onClick={handleNext}
-              disabled={step === 0 && !isFormValid}
+              disabled={
+                (step === 0 && !isFormValid) || (step === 1 && !formData.policy)
+              }
             >
               Next
             </Button>
@@ -133,14 +133,15 @@ export const Form = () => {
             <Button
               variant="contained"
               color="primary"
-              //TODO: Handle form submission
               onClick={() => alert("Form Submitted!")}
             >
               Submit
             </Button>
           )}
         </Box>
-      </Box>
-    </Paper>
+      </ButtonContainer>
+    </StyledFormContainer>
   );
 };
+
+export default Form;

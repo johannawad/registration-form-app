@@ -10,7 +10,7 @@ export const ClientInfoStep = ({
   formData,
   handleChange,
 }: UserInfoStepProps) => (
-  <Box p={4}>
+  <Box>
     <Typography variant="body2" gutterBottom pb={2}>
       Fill in your details
     </Typography>
