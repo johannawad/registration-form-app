@@ -1,11 +1,13 @@
 html,
 body {
-  min-height: 100vh;
-  padding: 0;
-  margin: 0;
+  height: 100%; /* Set height to 100% */
+  margin: 0; /* Remove default margin */
   font-family: system-ui, sans-serif;
-  background: url("/gradient.svg");
+  background-image: url("/gradient.svg");
+  background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Fixes the background */
 }
 
 a {

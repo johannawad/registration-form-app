@@ -1,9 +1,9 @@
-import { InsurancePackage } from "./InsurancePackage";
+import { InsurancePolicy } from "./InsurancePolicy";
 
 export interface FormData {
   firstName: string;
   lastName: string;
   email: string;
   dob: string;
-  insurancePackage: InsurancePackage | null;
+  policy: InsurancePolicy | null;
 }

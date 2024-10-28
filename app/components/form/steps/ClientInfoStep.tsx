@@ -11,18 +11,14 @@ export const ClientInfoStep = ({
   handleChange,
 }: UserInfoStepProps) => (
   <Box p={4}>
-    <Typography variant="h5" component="h2" gutterBottom>
-      User Information
+    <Typography variant="body2" gutterBottom pb={2}>
+      Fill in your details
     </Typography>
     <Box
       display="flex"
       flexWrap="wrap"
       sx={{
-        gap: 2, // Spacing between child elements
-        "& > *": {
-          flex: 1, // Each child takes equal width
-          minWidth: "200px", // Minimum width for better responsiveness
-        },
+        gap: 2,
       }}
     >
       <TextField

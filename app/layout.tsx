@@ -1,10 +1,10 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
 import { StoreProvider } from "./StoreProvider";
-import { Nav } from "./components/Nav";
 
 import "./styles/globals.css";
 import styles from "./styles/layout.module.css";
+import { ThemeProvider } from "@mui/material";
+import theme from "./theme";
 
 interface Props {
   readonly children: ReactNode;
@@ -13,17 +13,15 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <StoreProvider>
-      <html lang="en">
-        <body>
-          <section className={styles.container}>
-            <Nav />
-
-            <main className={styles.main}>{children}</main>
-
-            <footer className={styles.footer}>Footer text goes here</footer>
-          </section>
-        </body>
-      </html>
+      <ThemeProvider theme={theme}>
+        <html lang="en">
+          <body>
+            <section className={styles.container}>
+              <main>{children}</main>
+            </section>
+          </body>
+        </html>
+      </ThemeProvider>
     </StoreProvider>
   );
 }

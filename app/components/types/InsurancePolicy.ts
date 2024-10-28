@@ -1,10 +1,10 @@
-export interface InsurancePackage {
+export interface InsurancePolicy {
   name: string;
   description: string;
   price: number;
 }
 
-export const insurancePackages: InsurancePackage[] = [
+export const insurancePolicies: InsurancePolicy[] = [
   { name: "Basic", description: "Basic coverage", price: 100 },
   {
     name: "Standard",
