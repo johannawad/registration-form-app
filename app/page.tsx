@@ -6,5 +6,5 @@ export default function IndexPage() {
 }
 
 export const metadata: Metadata = {
-  title: "Trustflow Registration App",
+  title: "Insurance Policy App",
 };
